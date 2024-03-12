@@ -112,7 +112,7 @@ class WorkThread(QThread):
             score = lesson['cj']
             credit = lesson['xf']
             gp = lesson['jd']
-            year_semester = re.search('(\d{4}-\d{4})-(\d)',id)
+            year_semester = re.search(r'(\d{4}-\d{4})-(\d)',id)
             year = year_semester.group(1)
             if year_semester.group(2) == '1':
                 semester = '秋冬'
