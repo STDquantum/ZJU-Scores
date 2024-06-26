@@ -87,24 +87,24 @@ class User():
     
     # 当前学年的所有内容读取
     def YearAllQuery(self):
-        sql = f'SELECT SUM(credits), SUM(gp*credits), ROUND(SUM(gp*credits)/SUM(credits),2), ROUND(SUM(grade*credits)/SUM(credits),2) FROM score WHERE (not grade="合格") and (not grade="弃修") and (not grade="不合格") {self.year}'
+        sql = f'SELECT SUM(credits), SUM(gp*credits), ROUND(SUM(gp*credits)/SUM(credits),2), ROUND(SUM(grade*credits)/SUM(credits),2) FROM score WHERE (not grade="合格") and (not grade="弃修") and (not grade="不合格") and (not grade="缓考") {self.year}'
         res = self.Query(sql)
         return res
     
     # 当前学年的主修内容读取
     def YearMajorQuery(self):
-        sql = f'SELECT SUM(credits), SUM(gp*credits), ROUND(SUM(gp*credits)/SUM(credits),2), ROUND(SUM(grade*credits)/SUM(credits),2) FROM score WHERE (not grade="合格") and (not grade="弃修") and (not grade="不合格") and major="Y" {self.year}'
+        sql = f'SELECT SUM(credits), SUM(gp*credits), ROUND(SUM(gp*credits)/SUM(credits),2), ROUND(SUM(grade*credits)/SUM(credits),2) FROM score WHERE (not grade="合格") and (not grade="弃修") and (not grade="不合格") and (not grade="缓考") and major="Y" {self.year}'
         res = self.Query(sql)
         return res
     
     # 当前学期的所有内容读取
     def SemesterAllQuery(self):
-        sql = f'SELECT SUM(credits), SUM(gp*credits), ROUND(SUM(gp*credits)/SUM(credits),2), ROUND(SUM(grade*credits)/SUM(credits),2) FROM score WHERE (not grade="合格") and (not grade="弃修") and (not grade="不合格") {self.year} {self.semester}'
+        sql = f'SELECT SUM(credits), SUM(gp*credits), ROUND(SUM(gp*credits)/SUM(credits),2), ROUND(SUM(grade*credits)/SUM(credits),2) FROM score WHERE (not grade="合格") and (not grade="弃修") and (not grade="不合格") and (not grade="缓考") {self.year} {self.semester}'
         res = self.Query(sql)
         return res
     
     # 当前学期的主修内容读取
     def SemesterMajorQuery(self):
-        sql = f'SELECT SUM(credits), SUM(gp*credits), ROUND(SUM(gp*credits)/SUM(credits),2), ROUND(SUM(grade*credits)/SUM(credits),2) FROM score WHERE (not grade="合格") and (not grade="弃修") and (not grade="不合格") and major="Y" {self.year} {self.semester}'
+        sql = f'SELECT SUM(credits), SUM(gp*credits), ROUND(SUM(gp*credits)/SUM(credits),2), ROUND(SUM(grade*credits)/SUM(credits),2) FROM score WHERE (not grade="合格") and (not grade="弃修") and (not grade="不合格") and (not grade="缓考") and major="Y" {self.year} {self.semester}'
         res = self.Query(sql)
         return res
