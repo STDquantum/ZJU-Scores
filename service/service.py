@@ -87,7 +87,7 @@ class User():
     
     # 当前学年的所有内容读取
     def YearAllQuery(self):
-        sql = f'SELECT SUM(credits), SUM(gp*credits), ROUND(SUM(gp*credits)/SUM(credits),2), ROUND(SUM(grade*credits)/SUM(credits),2) FROM score WHERE 1=1 {self.year}'
+        sql = f'SELECT SUM(credits), SUM(gp*credits), ROUND(SUM(gp*credits)/SUM(credits),2), ROUND(SUM(grade*credits)/SUM(credits),2) FROM score WHERE not name="英语水平测试" {self.year}'
         res = self.Query(sql)
         return res
     
@@ -99,7 +99,7 @@ class User():
     
     # 当前学期的所有内容读取
     def SemesterAllQuery(self):
-        sql = f'SELECT SUM(credits), SUM(gp*credits), ROUND(SUM(gp*credits)/SUM(credits),2), ROUND(SUM(grade*credits)/SUM(credits),2) FROM score WHERE 1=1 {self.year} {self.semester}'
+        sql = f'SELECT SUM(credits), SUM(gp*credits), ROUND(SUM(gp*credits)/SUM(credits),2), ROUND(SUM(grade*credits)/SUM(credits),2) FROM score WHERE not name="英语水平测试" {self.year} {self.semester}'
         res = self.Query(sql)
         return res
     
